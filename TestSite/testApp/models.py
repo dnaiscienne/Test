@@ -2,10 +2,10 @@ from django.db import models
 
 # Create your models here.
 
-class Topic(models.Model):
-    topic_name = models.CharField(max_length=50)
-    topic_description = models.CharField(max_length=200)
-
+class OnlineTest(models.Model):
+    online_test_name = models.CharField(max_length=50)
+    online_test_description = models.CharField(max_length=200)
+    
 class Question(models.Model):
     QUESTION_DIFFICULTY_LEVELS = (
         (EASY, 'Easy'),
@@ -20,3 +20,12 @@ class Choice(models.Model):
     choice_is_correct = models.BooleanField(default=False)
     choice_text = models.CharField(max_length=200)
     
+class Exam(models.Model):
+    exam_date= models.DateField('date of exam')
+    exam_time_started = models.TimeField('start time')
+    exam_time_ended = models.TimeField()
+
+class Examinee(models.Model):
+    examinee_first_name = models.CharField()
+    examinee_last_name = models.CharField()
+    examinee_birthdate = models.DateField()
