@@ -19,6 +19,8 @@ class QuestionAdmin(admin.ModelAdmin):
         (None,      {'fields': ['question_text', 'question_difficulty']}),
     ]
     inlines = [ChoiceInline]
+    def get_model_perms(self, request):
+        return{}
 
 class OnlineTestAdmin(admin.ModelAdmin):
     fieldsets = [
