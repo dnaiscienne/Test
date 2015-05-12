@@ -16,7 +16,10 @@ class Exam(models.Model):
 class OnlineTest(models.Model):
     exams = models.ManyToManyField(Exam)
     online_test_name = models.CharField(max_length=50)
-    online_test_description = models.CharField(max_length=200)
+    online_test_description = models.TextField(max_length=200)
+
+    def __str__(self):
+        return self.online_test_name
     
 class Question(models.Model):
     EASY = 'E'
@@ -30,10 +33,17 @@ class Question(models.Model):
     online_test = models.ForeignKey(OnlineTest)
     question_type = models.CharField(max_length=20)
     question_text = models.CharField(max_length=500)
-    question_diffficulty = models.CharField(max_length=15, choices=QUESTION_DIFFICULTY_LEVELS, default=EASY)
+    question_difficulty = models.CharField(max_length=15, choices=QUESTION_DIFFICULTY_LEVELS, default=EASY)
+
+    def __str__(self):
+        return self.question_text
+
 
 class Choice(models.Model):
     question = models.ForeignKey(Question)
     choice_is_correct = models.BooleanField(default=False)
     choice_text = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.choice_text
 
