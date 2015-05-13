@@ -21,6 +21,7 @@ class QuestionAdmin(admin.ModelAdmin):
         (None,      {'fields': ['online_test', 'question_text', 'question_difficulty']}),
     ]
     inlines = [ChoiceInline]
+##    list_filter = ['online_test']
     def get_model_perms(self, request):
         return{}
 
@@ -28,7 +29,7 @@ class OnlineTestAdmin(admin.ModelAdmin):
     
     def question_link(self, obj):
         url = reverse('admin:testApp_question_changelist')
-        return '<a href=%s?OnlineTest=%s">See Questions</a>' % (url, obj.pk)
+        return '<a href="%s?online_test_id=%s">See Questions</a>' % (url, obj.pk)
     question_link.allow_tags = True
     list_display = ('online_test_name', 'question_link',)
     
