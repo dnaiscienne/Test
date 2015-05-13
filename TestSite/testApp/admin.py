@@ -1,6 +1,8 @@
 from django.contrib import admin
 from testApp.models import Choice, Question, OnlineTest
 
+from django.core.urlresolvers import reverse
+
 # Register your models here.
 
 class ChoiceInline(admin.TabularInline):
@@ -16,16 +18,24 @@ class QuestionInline(admin.TabularInline):
 
 class QuestionAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None,      {'fields': ['question_text', 'question_difficulty']}),
+        (None,      {'fields': ['online_test', 'question_text', 'question_difficulty']}),
     ]
     inlines = [ChoiceInline]
     def get_model_perms(self, request):
         return{}
 
 class OnlineTestAdmin(admin.ModelAdmin):
+    
+    def question_link(self, obj):
+        url = reverse('admin:testApp_question_changelist')
+        return '<a href=%s?OnlineTest=%s">See Questions</a>' % (url, obj.pk)
+    question_link.allow_tags = True
+    list_display = ('online_test_name', 'question_link',)
+    
     fieldsets = [
         (None,      {'fields': ['online_test_name', 'online_test_description']}),
     ]
+
     inlines = [QuestionInline]
 
 admin.site.register(OnlineTest, OnlineTestAdmin)
