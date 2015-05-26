@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from TestSite import local_settings
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -75,16 +76,16 @@ WSGI_APPLICATION = 'TestSite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'testsite',
-        'USER': 'Developer',
-        'PASSWORD': '~1q2w3e4r',
-        'HOST' : '127.0.0.1',
-        'PORT' : '3306',
-    }
-}
+##DATABASES = {
+##    'default': {
+##        'ENGINE': 'django.db.backends.mysql',
+##        'NAME': 'testsite',
+##        'USER': 'Developer',
+##        'PASSWORD': '~1q2w3e4r',
+##        'HOST' : '127.0.0.1',
+##        'PORT' : '3306',
+##    }
+##}
 
 
 # Internationalization
@@ -105,3 +106,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# import settings from local file
+DATABASES = (
+    local_settings.DATABASES
+    )
+    
+    
+
