@@ -6,15 +6,26 @@ class Examinee(models.Model):
     examinee_first_name = models.CharField(max_length=200)
     examinee_last_name = models.CharField(max_length=200)
     examinee_birthdate = models.DateField()
+    def __str__(self):
+        return self.examinee_first_name + " " + self.examinee_last_name
+
+class ExamType(models.Model):
+    exam_type_name = models.CharField(max_length=50)
+    exam_type_description = models.TextField(max_length=200)
+    def __str__(self):
+        return self.exam_type_name
 
 class Exam(models.Model):
     examinee = models.ForeignKey(Examinee)
+    exam_type = models.ForeignKey(ExamType)
     exam_date = models.DateField('date of exam')
     exam_time_started = models.TimeField('start time')
     exam_time_ended = models.TimeField()
+    def __str__(self):
+        return self.examinee + " " + self.exam_date
     
 class OnlineTest(models.Model):
-    exams = models.ManyToManyField(Exam)
+    exam_type = models.ManyToManyField(ExamType)
     online_test_name = models.CharField(max_length=50)
     online_test_description = models.TextField(max_length=200)
 

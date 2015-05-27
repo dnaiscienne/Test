@@ -1,10 +1,11 @@
 from django.contrib import admin
-from testApp.models import Choice, Question, OnlineTest
+from testApp.models import *
 
 from django.core.urlresolvers import reverse
 
 # Register your models here.
-
+    
+    
 class ChoiceInline(admin.TabularInline):
     model = Choice
     extra = 3
@@ -39,5 +40,8 @@ class OnlineTestAdmin(admin.ModelAdmin):
 
     inlines = [QuestionInline]
 
+admin.site.register(Examinee)
+admin.site.register(ExamType)
+admin.site.register(Exam)
 admin.site.register(OnlineTest, OnlineTestAdmin)
 admin.site.register(Question, QuestionAdmin)

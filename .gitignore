@@ -70,7 +70,7 @@ logs/
 
 # Specific files #
 ##################
-TestSite/settings.py
+TestSite/TestSite/local_settings.py
 
 # OS generated files #
 ######################
@@ -85,3 +85,8 @@ Thumbs.db
 *.log
 *.sql
 *.sqlite
+*.sqlite3
+
+# Migrations #
+##############
+TestSite/testApp/migrations/
