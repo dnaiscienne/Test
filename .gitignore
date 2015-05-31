@@ -67,10 +67,11 @@ target/
 # Directories #
 ###############
 logs/
+TestSite/testApp/migrations/
 
 # Specific files #
 ##################
-TestSite/settings.py
+TestSite/TestSite/local_settings.py
 
 # OS generated files #
 ######################
