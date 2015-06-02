@@ -14,5 +14,9 @@ def anything(request):
         c = Context({'current_time': datetime.now(), })
         return HttpResponse(t.render(c))
 
+def identify_examinee(request):
+        t = loader.get_template('testApp/identify_examinee.html')
+        c = Context({'current_time': datetime.now(), })
+        return HttpResponse(t.render(c))
 
 # Create your views here.

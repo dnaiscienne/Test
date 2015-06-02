@@ -31,6 +31,8 @@ class OnlineTest(models.Model):
 
     def __str__(self):
         return self.online_test_name
+
+        
     
 class Question(models.Model):
     EASY = 'E'
