@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import Context, loader
 from datetime import datetime
+from .models import Question, OnlineTest
 
 def index(request):
         return HttpResponse('<html><body>Hello Hello</body></html>')
@@ -22,9 +23,10 @@ def identify_examinee(request):
 
 #look another lame stub method thingy. Tovarisch help me...
 def load_test(request, online_test_id):
+	online_test = OnlineTest.objects.get(pk=online_test_id)
 	t = loader.get_template('testApp/online_test.html')
-        c = Context({'current_time': datetime.now(), })
-        return HttpResponse(t.render(c))
+	c = Context({'online_test': online_test, })
+	return HttpResponse(t.render(c))
 	
 
 
