@@ -2,5 +2,15 @@
 <head><title>Test Landing Page Stub</title></head>
 <body>
 	<p> Name: {{online_test.online_test_name}}. </p>
+	<ul>
+	{% for question in online_test.question_set.all %}
+		<li>{{question.question_text}}</li>
+		<ul>
+		{% for choice in question.choice_set.all %}
+			<li>{{choice.choice_text}}</li>
+		{% endfor%}	
+		</ul>
+	{% endfor %}
+	</ul>
 </body>
 </html>
