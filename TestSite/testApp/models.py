@@ -19,10 +19,10 @@ class Exam(models.Model):
     examinee = models.ForeignKey(Examinee)
     exam_type = models.ForeignKey(ExamType)
     exam_date = models.DateField('date of exam')
-    exam_time_started = models.TimeField('start time')
-    exam_time_ended = models.TimeField()
+    exam_time_started = models.TimeField('start time', blank=True, null=True)
+    exam_time_ended = models.TimeField(blank=True, null=True)
     def __str__(self):
-        return self.examinee + " " + self.exam_date
+        return self.examinee.examinee_first_name + " " + self.examinee.examinee_last_name + " " + str(self.exam_date)
     
 class OnlineTest(models.Model):
     exam_type = models.ManyToManyField(ExamType)

@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse, Http404
 from django.template import Context, loader
 from datetime import datetime
 from .models import Question, OnlineTest
@@ -23,10 +23,9 @@ def identify_examinee(request):
 
 #look another lame stub method thingy. Tovarisch help me...
 def load_test(request, online_test_id):
-	online_test = OnlineTest.objects.get(pk=online_test_id)
-	t = loader.get_template('testApp/online_test.html')
-	c = Context({'online_test': online_test, })
-	return HttpResponse(t.render(c))
+	online_test = get_object_or_404(OnlineTest, pk=online_test_id)
+	context = {'online_test': online_test, }
+	return render(request, 'testApp/online_test.html', context)
 	
 
 

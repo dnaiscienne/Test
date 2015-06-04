@@ -35,11 +35,10 @@ class OnlineTestAdmin(admin.ModelAdmin):
     list_display = ('online_test_name', 'question_link',)
     
     fieldsets = [
-        (None,      {'fields': ['online_test_name', 'online_test_description']}),
+        (None,      {'fields': ['online_test_name', 'online_test_description', 'exam_type']}),
     ]
-
     inlines = [QuestionInline]
-
+	
 admin.site.register(Examinee)
 admin.site.register(ExamType)
 admin.site.register(Exam)
