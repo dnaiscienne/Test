@@ -75,6 +75,7 @@ WSGI_APPLICATION = 'TestSite.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
+# See local_settings.py file
 
 ##DATABASES = {
 ##    'default': {
